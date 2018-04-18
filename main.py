@@ -2,40 +2,24 @@ from pandaeditor import *
 from flycontroller import FlyController
 
 app = PandaEditor()
-# window.size *= .33
-window.center_on_screen()
-
-e = Entity(
-    model = 'quad',
-    texture = 'world_0',
-    rotation_x = 90
-    )
 
 sky = Sky()
-
-e.scale *= 500
-water = Entity(
-    model = 'quad',
-    color = color.color(227, .2, .55),
-    rotation_x = 90,
-    scale = (9999, 9999, 9999),
-    y = -1
-    )
-# water = Sky('world_0')
-# water.color = color.blue
-# water.rotation_z = 180
+ground = Plane(500, texture = 'world_0')
+water = Plane(9999, color = color.color(227, .2, .55), y = -1)
+clouds = Plane(500, texture = 'clouds', y = 20)
+clouds.setTwoSided(True)
 
 player = FlyController()
 
 camera.position = (100, 100,100)
-camera.look_at(e)
+camera.look_at(ground)
 
-e = Entity(
+ground = Entity(
     model = 'quad',
     texture = 'world_0',
     rotation_x = -90,
     color = color.blue
     )
-e.scale *= 500
+ground.scale *= 500
 
 app.run()
