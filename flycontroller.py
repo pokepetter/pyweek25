@@ -6,7 +6,7 @@ class FlyController(Entity):
         super().__init__()
         self.speed = 0
         self._speed = 0
-        self.max_speed = .5
+        self.max_speed = .25
         self.acceleration_rate = 5
 
         self.paused = True
@@ -58,8 +58,5 @@ class FlyController(Entity):
         self.rotation_y = lerp(self.rotation_y, self.target_rotation_y, dt * self.rotation_speed)
         self.rotation_x = lerp(self.rotation_x, self.target_rotation_x, dt * self.rotation_speed)
         self._speed = lerp(self._speed, self.speed, dt * self.acceleration_rate)
-
-
-
 
         self.position += self.forward * self._speed
